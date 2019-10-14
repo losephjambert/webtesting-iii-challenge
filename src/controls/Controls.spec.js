@@ -31,3 +31,16 @@ test('Gate Unlocked and Closed returns can be locked, can be opened', () => {
   fireEvent.click(getByTestId('gate-button'));
   expect(toggleClosedMockSpy).toHaveBeenCalledTimes(1);
 });
+
+test('Gate Unlocked and open, returns cannot be locked, can be closed', () => {
+  const toggleLockedMockSpy = jest.fn();
+  const toggleClosedMockSpy = jest.fn();
+
+  const { getByTestId } = render(
+    <Controls locked={false} closed={false} toggleLocked={toggleLockedMockSpy} toggleClosed={toggleClosedMockSpy} />
+  );
+  fireEvent.click(getByTestId('lock-button'));
+  expect(toggleLockedMockSpy).toHaveBeenCalledTimes(0);
+  fireEvent.click(getByTestId('gate-button'));
+  expect(toggleClosedMockSpy).toHaveBeenCalledTimes(1);
+});
