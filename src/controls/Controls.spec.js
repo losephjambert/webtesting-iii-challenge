@@ -44,3 +44,15 @@ test('Gate Unlocked and open, returns cannot be locked, can be closed', () => {
   fireEvent.click(getByTestId('gate-button'));
   expect(toggleClosedMockSpy).toHaveBeenCalledTimes(1);
 });
+
+test(`Lock button displays 'unlock gate' if gate is locked`, () => {
+  const { getByText, queryByText } = render(<Controls locked={true} />);
+  expect(getByText(/unlock gate/i));
+  expect(queryByText(/^lock gate/i)).toBeFalsy();
+});
+
+test(`Close button displays 'open gate' if gate is closed`, () => {
+  const { getByText, queryByText } = render(<Controls closed={true} />);
+  expect(getByText(/open gate/i));
+  expect(queryByText(/^close gate/i)).toBeFalsy();
+});
