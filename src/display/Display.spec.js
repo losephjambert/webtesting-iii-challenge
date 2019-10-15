@@ -32,3 +32,7 @@ test("Class should be 'red-led' if unlocked or open", () => {
   expect(lock).toBeInTheDocument();
   expect(lock).toHaveClass('red-led');
 });
+
+test('displays if gate is open/closed and if it is locked/unlocked', () => {
+  expect(render(<Display locked={true} closed={true} />)).toMatchSnapshot();
+});
