@@ -13,6 +13,12 @@ test('Display locked if locked prop is true. Display unlocked if locked prop is 
   expect(queryByText(/^locked/i)).toBeFalsy();
 });
 
+test('Display closed if closed prop is true. Display open if closed prop is false', () => {
+  const { getByText, queryByText } = render(<Display closed={true} />);
+  expect(getByText(/closed/i));
+  expect(queryByText(/^open/i)).toBeFalsy();
+});
+
 test("Class should be 'green-led' if unlocked or open", () => {
   const { queryByText } = render(<Display locked={false} />);
   const lock = queryByText(/unlocked/i);
