@@ -7,12 +7,12 @@ test('it renders correctly', () => {
   render(<Dashboard />);
 });
 
-test('gate should default to unlocked and open', () => {
+test('gate defaults to unlocked and open', () => {
   const { getByText } = render(<Dashboard />);
   expect(getByText(/open/i));
   expect(getByText(/unlocked/i));
 });
 
-test('Dashboard should render Display and Controls', () => {
+test('Dashboard shows the controls and display', () => {
   expect(render(<Dashboard />)).toMatchSnapshot();
 });

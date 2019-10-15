@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dashboard should render Display and Controls 1`] = `
+exports[`Dashboard shows the controls and display 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>

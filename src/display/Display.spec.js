@@ -7,26 +7,26 @@ test('Display renders correctly', () => {
   render(<Display />);
 });
 
-test('Display locked if locked prop is true. Display unlocked if locked prop is false', () => {
+test(`displays 'Locked' if the locked prop is true and 'Unlocked' if otherwise`, () => {
   const { getByText, queryByText } = render(<Display locked={false} />);
   expect(getByText(/unlocked/i));
   expect(queryByText(/^locked/i)).toBeFalsy();
 });
 
-test('Display closed if closed prop is true. Display open if closed prop is false', () => {
+test(`displays 'Closed' if the closed prop is true and 'Open' if otherwise`, () => {
   const { getByText, queryByText } = render(<Display closed={true} />);
   expect(getByText(/closed/i));
   expect(queryByText(/^open/i)).toBeFalsy();
 });
 
-test("Class should be 'green-led' if unlocked or open", () => {
+test('when unlocked or open, use the green-led class', () => {
   const { queryByText } = render(<Display locked={false} />);
   const lock = queryByText(/unlocked/i);
   expect(lock).toBeInTheDocument();
   expect(lock).toHaveClass('green-led');
 });
 
-test("Class should be 'red-led' if unlocked or open", () => {
+test('When locked or closed, use the red-led class', () => {
   const { queryByText } = render(<Display locked={true} />);
   const lock = queryByText(/locked/i);
   expect(lock).toBeInTheDocument();
